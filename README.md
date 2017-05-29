@@ -1,1 +1,0 @@
-# tamTamy Mobile
