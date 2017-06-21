@@ -28,7 +28,7 @@ export class UserService {
         )
             .map(response => response.json() as IUserLogin)
             .do((data: IUserLogin) => {
-                console.log(data);
+                //console.log(data);
                 this.sessionToken = data.token;
             })
             .catch(this.handleErrors);
@@ -41,5 +41,21 @@ export class UserService {
 
     get token():string {
         return this.sessionToken;
+    }
+
+
+    getFeeds(token: string): Observable<IUserLogin> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.get(
+            Config.apiUrl + `feed.json?token=${token}&startOffset=100&limit=10`,
+            {headers: headers}
+        )
+            .map(response => response.json())
+            .do((data) => {
+                console.log(data);
+            })
+            .catch(this.handleErrors);
     }
 }
