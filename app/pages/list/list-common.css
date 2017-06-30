@@ -11,3 +11,8 @@
 TextField {
   color: white;
 }
+
+.cardStyle {
+    background-color: #fff;
+    color: #000;
+}

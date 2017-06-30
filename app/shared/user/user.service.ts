@@ -7,6 +7,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
 import { User } from './user';
+import { Content } from '../feed/content';
 import { Config } from '../config';
 import { IUserLogin } from './i-user-login';
 
@@ -44,15 +45,15 @@ export class UserService {
     }
 
 
-    getFeeds(token: string): Observable<IUserLogin> {
+    getContent(token: string): Observable<Content> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         return this.http.get(
-            Config.apiUrl + `feed.json?token=${token}&startOffset=100&limit=10`,
+            Config.apiUrl + `content.json?token=${token}&startOffset=`+Config.startOffsetContent+`&limit=`+Config.limitContent+`&`+ Config.groupId,
             {headers: headers}
         )
-            .map(response => response.json())
+            .map(response => response.json() as Content)
             .do((data) => {
                 console.log(data);
             })

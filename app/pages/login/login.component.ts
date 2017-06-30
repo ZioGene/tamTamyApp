@@ -7,16 +7,7 @@ import { Page } from "ui/page";
 
 @Component({
     selector: 'my-app',
-    template: `
-        <StackLayout>
-            <Image src="res://logo_login" stretch="none" horizontalAlignment="center"></Image>
-            <TextField hint='UserID' keyboardType='email' [(ngModel)]="user.userid"
-                       autocorrect='false' autocapitalizationType='none'></TextField>
-            <TextField hint='Password'  secure='true' [(ngModel)]="user.password"></TextField>
-
-            <Button text='Login' (tap)="login()" class="submit-button"></Button>
-        </StackLayout>
-    `,
+    templateUrl: "pages/login/login.html" ,
     styleUrls: ['pages/login/login-common.css', 'pages/login/login.css']
 })
 export class LoginComponent implements OnInit{
@@ -29,10 +20,12 @@ export class LoginComponent implements OnInit{
 
     ngOnInit(){
         this.page.actionBarHidden = true;
+        this.page.backgroundImage = "~/resources/images/social2.jpg";
+        this.page.css = 'page {background-size: cover; background-position: center; background-repeat: no-repeat;}';
     }
 
     login() {
-        console.log("hello");
+        console.log("login");
         this.userService.login(this.user)
             .subscribe(
                 (data: IUserLogin) =>  {

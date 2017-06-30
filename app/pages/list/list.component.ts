@@ -10,22 +10,29 @@ import { Page } from "ui/page";
 })
 export class ListComponent implements OnInit{
 
-  feedList: Array<Object> = [];
+  //contentList: Array<Object> = [];
+  contentList: any;
 
   constructor(private router: Router, private page: Page, private userService: UserService) {}
 
   ngOnInit() {
-    //this.feedList.push({ name: "Apples" });
-    
-  this.getFeeds();
+    //this.contentList.push({ name: "Apples" });
+    //this.contentList.push({ name: "Apples" });
+
+     this.getContent();
   }
 
-  getFeeds() {
-        console.log("getFeeds");
-        this.userService.getFeeds(this.userService.token)
+  getContent() {
+        console.log("getContent");
+        this.userService.getContent(this.userService.token)
             .subscribe(
                 (response) =>  {
-                    console.log(JSON.stringify(response));
+                    //console.log(JSON.stringify(response));
+                    this.contentList.title= "titolo";
+                    this.contentList.id= "id";
+                    this.contentList.network= "network";
+                    this.contentList.contentType= "contentType";
+                    
                 },
                 (error) => alert("Error!")
             );

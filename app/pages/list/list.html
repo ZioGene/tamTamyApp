@@ -1,1 +1,12 @@
-<Label text="Hello world"></Label>
+<StackLayout>
+    <CardView class="cardStyle" margin="10" elevation="40" radius="1">
+        <GridLayout rows="10,30,30,250, auto, auto,10" columns="10,40, *, 30,10">
+            <Image src="~/resources/images/logo_reply.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2"></Image>
+            <Label class="createdBy text-left" horizontalAlignment="left" [text]="contentList.list.title" row="1" col="2" textWrap="true"></Label>
+            <Label class="createdOn text-left" horizontalAlignment="left" [text]="contentList.list.id" row="2" col="2"></Label>
+            <Image [src]="'https://img.youtube.com/vi/'+contentList.list.title+'/mqdefault.jpg'" stretch="aspectFit" colSpan="3" col="1" row="3"></Image>
+            <Label horizontalAlignment="left" [text]="contentList.list.contentType" colSpan="3" row="4" textWrap="true" col="1"></Label>
+            <Label horizontalAlignment="left" [text]="contentList.list.network" textWrap="true" col="1" row="5" colSpan="3"></Label>
+        </GridLayout>
+    </CardView>
+</StackLayout>

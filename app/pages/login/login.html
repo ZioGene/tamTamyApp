@@ -1,0 +1,8 @@
+<StackLayout>
+    <Image src="res://logo_login" stretch="none" horizontalAlignment="center"></Image>
+    <TextField hint='UserID' keyboardType='email' [(ngModel)]="user.userid" autocorrect='false' autocapitalizationType='none'></TextField>
+    <TextField hint='Password' secure='true' [(ngModel)]="user.password"></TextField>
+
+    <Button text='Login' (tap)="login()" class="submit-button"></Button>
+</StackLayout>
+<Image class="logo_reply" width="200" height="100" src="~/resources/images/logo_reply.png"  horizontalAlignment="center" verticalAlignment="bottom"></Image>
